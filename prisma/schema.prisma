@@ -54,6 +54,8 @@ model Anuncio {
   imovel        Imovel                   @relation(fields: [imovelId], references: [id], onDelete: Cascade)
   imovelId      Int
   interessado   InteressadosOnAnuncios[]
+  favorito      Favorito[]
+  interesse     Interesse[]
 }
 
 model Interessado {
@@ -97,6 +99,8 @@ model Cliente {
   endereco       Endereco   @relation(fields: [enderecoId], references: [id])
   enderecoId     Int
   contrato       Contrato[]
+  favorito       Favorito[]
+  interesse      Interesse[]
 }
 
 model Funcionario {
@@ -106,4 +110,20 @@ model Funcionario {
   password String
   token    String?
   imovel   Imovel[]
+}
+
+model Favorito {
+  id        Int   @id @default(autoincrement())
+  anuncio        Anuncio   @relation(fields: [anuncioId], references: [id], onDelete: Cascade)
+  anuncioId      Int
+  cliente        Cliente  @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+  clienteId      Int
+}
+
+model Interesse {
+  id             Int   @id @default(autoincrement())
+  anuncio        Anuncio   @relation(fields: [anuncioId], references: [id], onDelete: Cascade)
+  anuncioId      Int
+  cliente        Cliente  @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+  clienteId      Int
 }

@@ -1,9 +1,15 @@
-import { PrismaClient, Contrato, Cliente, Endereco } from "@prisma/client";
+import { PrismaClient, Contrato, Cliente, Endereco, Imovel } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 export const listarContratos = async () => {
-  return await prisma.contrato.findMany();
+  return await prisma.contrato.findMany({});
+};
+
+export const listarContratosPorImovel = async (id: number) => {
+  return await prisma.contrato.findMany({
+    where: { imovelId: id },
+  });
 };
 
 export const getContrato = async (id: number) => {
