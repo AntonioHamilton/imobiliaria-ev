@@ -8,8 +8,15 @@ export const adicionarFavorito = async (favorito: Favorito) => {
   });
 };
 
-export const listarFavoritos = async () => {
-  return await prisma.favorito.findMany();
+export const listarFavoritos = async (id: number) => {
+  return await prisma.favorito.findMany({
+    where:{
+      clienteId: id
+    },
+    include: {
+      anuncio: true,
+    }
+  });
 };
 
 export const removerFavorito = async (id: number) => {

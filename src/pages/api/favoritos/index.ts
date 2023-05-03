@@ -8,7 +8,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query;
   if (req.method === "GET") {
     try {
-      const favoritos = await listarFavoritos();
+      const favoritos = await listarFavoritos(Number(id));
       res.status(200).json(favoritos);
     } catch (e) {
       res.status(500).json({ error: "Internal Server Error" });
