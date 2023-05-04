@@ -28,6 +28,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const cliente = await adicionarCliente(req.body);
       return res.status(200).json(cliente);
     } catch (e) {
+      console.log({e})
       return res.status(400).json({ error: e });
     }
   }

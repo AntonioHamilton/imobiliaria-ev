@@ -80,6 +80,12 @@ By completing the filling process on the .env file, run the following command to
 $ npx prisma migrate dev
 ```
 
+Use this command to generate DB types in typescript:
+
+```shell
+$ npx prisma generate
+```
+
 (Optional) To populate the database run this:
 
 ```shell
