@@ -127,3 +127,11 @@ model Interesse {
   cliente        Cliente  @relation(fields: [clienteId], references: [id], onDelete: Cascade)
   clienteId      Int
 }
+
+model Usuario {
+  password       string
+  cliente        Cliente  @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+  clienteId      Int
+  favorito       Favorito[]
+  interesse      Interesse[]
+}
