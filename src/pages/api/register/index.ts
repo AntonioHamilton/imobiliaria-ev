@@ -1,5 +1,5 @@
 import { NextApiResponse, NextApiRequest } from "next";
-import { register } from "src/backend/login/ctrLogin";
+import { register } from "src/backend/login/ctrLoginFunc";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === "POST") {

@@ -91,11 +91,12 @@ model Contrato {
 model Cliente {
   id             Int        @id @default(autoincrement())
   nome           String
-  cpf            String
+  cpf            String     @unique
   rg             String?
   dataNascimento DateTime
   telefone       String
   email          String
+  password       String?    
   endereco       Endereco   @relation(fields: [enderecoId], references: [id])
   enderecoId     Int
   contrato       Contrato[]
