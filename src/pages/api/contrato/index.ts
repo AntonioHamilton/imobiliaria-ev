@@ -2,13 +2,20 @@ import { NextApiResponse, NextApiRequest } from "next";
 import {
   emitirContrato,
   listarContratos,
+  listarContratosPorImovel,
 } from "src/backend/contrato/ctrContrato";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const { id } = req.query;
   if (req.method === "GET") {
     try {
-      const contratos = await listarContratos();
-      res.status(200).json(contratos);
+      if (id) {
+        const contratos = await listarContratosPorImovel(Number(id));
+        res.status(200).json(contratos);
+      } else{
+        const contratos = await listarContratos();
+        res.status(200).json(contratos);
+      }
     } catch (e) {
       res.status(500).json({ error: "Server Error" });
     }
