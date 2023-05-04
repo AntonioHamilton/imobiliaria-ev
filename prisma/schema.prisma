@@ -96,6 +96,7 @@ model Cliente {
   dataNascimento DateTime
   telefone       String
   email          String
+  password       String?    
   endereco       Endereco   @relation(fields: [enderecoId], references: [id])
   enderecoId     Int
   contrato       Contrato[]
