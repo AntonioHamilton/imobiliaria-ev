@@ -13,7 +13,7 @@ export const login = async (req, res) => {
 
         const funcionario = await prisma.funcionario.findUnique({
             where: {
-                email
+              email
             }
         })
 
