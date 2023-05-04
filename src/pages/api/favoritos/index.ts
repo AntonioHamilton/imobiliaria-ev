@@ -17,8 +17,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.method === "POST") {
     try {
-      const interessados = await adicionarFavorito(req.body);
-      return res.status(200).json(interessados);
+      const favorito = await adicionarFavorito(req.body);
+      return res.status(200).json(favorito);
     } catch (e) {
       return res.status(400).json({ error: e });
     }
@@ -26,8 +26,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.method === "DELETE") {
     try {
-      const interessados = await removerFavorito(Number(id));
-      return res.status(200).json(interessados);
+      const favorito = await removerFavorito(Number(id));
+      return res.status(200).json(favorito);
     } catch (e) {
       return res.status(400).json({ error: e });
     }
