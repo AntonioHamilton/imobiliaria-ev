@@ -8,6 +8,10 @@ export const listarClientes = async () => {
   };
 
 export const adicionarCliente = async (cliente: Cliente) => {
+  if (cliente.password) {
+    let { password } = cliente;
+    cliente.password = bcrypt.hashSync(password, 10);
+  }
   return await prisma.cliente.create({
     data: cliente,
   });
